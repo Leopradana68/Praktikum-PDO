@@ -1,0 +1,18 @@
+# :computer: CRUD PHP, MySQL, dengan User Authentication
+
+Hasil praktikum PBD pertemuan #11-14 - Penerapan Konsep PDO _Extension_.
+
+Mata Kuliah Pemrograman Basis Data dengan dosen pengampu:
+
+1. Eko Win Kenali, S.Kom., M.Cs.
+2. Agiska Ria Supriyatna, S.Si, MTI
+
+## :handshake: TIM PBD
+
+- [Agistha Dwina Primalita](https://github.com/Agisthadwinap)
+- [Ajeng Wulandari](https://github.com/Agisthadwinap)
+- [Alfiyah Salsabila](https://github.com/alfiyahsb)
+- [Gerry Ardhika](https://github.com/gerryar)
+- [Ika Ariani Annisa](https://github.com/ikaearinisae)
+- [Irfandi Iqbal Abimanyu](https://github.com/irfnd) **(Ketua)**
+- [Leo Pradana](https://github.com/leopradana68)
