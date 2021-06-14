@@ -1,0 +1,83 @@
+<?php
+session_start();
+if($_SESSION){
+  if($_SESSION['role'] == 'User'){
+  } else {
+    header('location:../login.php');
+  }
+} else {
+  header('location:../login.php');
+}
+
+include("../config/Library.php");
+$pdo = new Library();
+$table = "dt_prodi";
+$a = @$_GET["a"];
+
+switch($a) {
+  case "list":
+    read_data();
+    break;
+  case "logout":
+    logout();
+    break;
+  default:
+    read_data();
+    break;
+}
+?>
+
+<?php
+function read_data() {
+  global $pdo;
+  global $table;
+  $result = $pdo->getAll($table);
+
+  echo "<!DOCTYPE html>
+    <html lang='en'>
+      <head>
+        <meta charset='UTF-8'/>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+        <link rel='stylesheet' href='../public/style.css'>
+        <link rel='stylesheet' href='../public/fontawesome/css/all.css'/>
+        <title>Topik 2 - PBD CRUD 2 TIER</title>
+      </head>
+      <body>
+        <div class='container'>
+          <div class='title'>
+            <h2>Data Program Studi</h2>
+            <p class='muted'>".$_SESSION['username']."@".$_SESSION['role']."</p>
+          </div>
+          <ul class='responsive-table'>
+            <li class='table-header green'>
+              <div class='col col-1'>ID</div>
+              <div class='col col-2'>KODE</div>
+              <div class='col col-3'>PRODI</div>
+              <div class='col col-4'>AKREDITASI</div>
+            </li>";
+  
+  foreach($result as $row) {
+    echo "<li class='table-row'>
+              <div class='col col-1' data-label='ID'>".$row["idprodi"]."</div>
+              <div class='col col-2' data-label='KODE'>".$row["kdprodi"]."</div>
+              <div class='col col-3' data-label='PRODI'>".$row["nmprodi"]."</div>
+              <div class='col col-4' data-label='AKREDITASI'>".$row["akreditasi"]."</div>
+            </li>";
+  }
+
+  echo "<li class='button-input btn-bot'>
+              <a href='index.php?a=logout' style='margin:0;'><button class='btn red'><i class='fas fa-sign-out-alt'></i> Logout</button></a>
+            </li>
+          </ul>
+        </div>
+      </body>
+    </html>";
+}
+
+function logout() {
+  session_start();
+  session_destroy();
+  header("location:../index.php");
+}
+
+?>
