@@ -49,7 +49,7 @@ class Library {
     try {
       $f = array_keys($input);
       $v = array_values($input);
-      $query = $this->db->prepare("UPDATE $table set $f[1]=$v[1], $f[2]=$v[2], $f[3]=$v[3] WHERE $f[0]=$v[0]");
+      $query = $this->db->prepare("UPDATE $table set $f[1]='$v[1]', $f[2]='$v[2]', $f[3]='$v[3]' WHERE $f[0]=$v[0]");
       $query->execute();
       return "Berhasil Memperbarui Data ".$query->rowCount();
     } catch (PDOExeption $err) {
